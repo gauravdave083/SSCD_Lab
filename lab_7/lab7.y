@@ -12,7 +12,10 @@ void yyerror(const char *str);
 
 start: sif { printf("VALID STATEMENT\n"); };
 
-sif: IF OP cmpn CP stmt;
+sif: IF OP cmpn CP stmt
+    | WH OP cmpn CP stmt { printf("Valid while loop\n"); }
+    | FOR OP cmpn SC stmt { printf("Valid for loop\n"); }
+    ;
 
 cmpn: ID CMP ID 
     | ID CMP NUM;
@@ -22,7 +25,9 @@ stmt: ID ASG ID OPR ID SC
     | ID ASG NUM OPR ID SC 
     | ID ASG NUM OPR NUM SC 
     | ID ASG ID SC 
-    | ID ASG NUM SC;
+    | ID ASG NUM SC
+    | DO stmt { printf("Valid do-while loop\n"); }
+    ;
 
 %%
 

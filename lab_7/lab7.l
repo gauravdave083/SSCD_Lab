@@ -7,6 +7,7 @@
 "if"        { return IF; }
 "do"        { return DO; }
 "for"       { return FOR; }
+"while"     { return WH; }   // Added while loop keyword
 "("         { return OP; }
 ")"         { return CP; }
 "{"         { return OCB; }
@@ -22,7 +23,6 @@
 .           { printf("Unexpected character: %s\n", yytext); }
 
 %%
-
 int yywrap() {
     return 1;
 }
